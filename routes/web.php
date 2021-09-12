@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('admin.login');
 });
 
 // Auth::routes();
@@ -23,7 +23,13 @@ Route::get('/', function () {
 
 
 
-// for admin route
+// for admin template load route
 Route::get('admin/login', [App\Http\Controllers\AdminController::class, 'showAdminLoginForm'])-> name('admin.login');
 Route::get('admin/register', [App\Http\Controllers\AdminController::class, 'showAdminRegisterForm'])-> name('admin.register');
 Route::get('admin/dashboard', [App\Http\Controllers\AdminController::class, 'showAdminDashboard'])-> name('admin.dashboard');
+
+// login and registration route
+Route::post('admin/login', [\App\Http\Controllers\Auth\LoginController::class, 'login']) -> name('admin.login');
+Route::post('admin/register', [\App\Http\Controllers\Auth\RegisterController::class, 'register']) -> name('admin.register');
+
+

@@ -15,12 +15,13 @@
                         <p class="account-subtitle">Access to our dashboard</p>
 
                         <!-- Form -->
-                        <form action="https://dreamguys.co.in/demo/doccure/admin/index.html">
+                        <form action="{{ route('admin.login') }}" method="POST">
+                            @csrf
                             <div class="form-group">
-                                <input class="form-control" type="text" placeholder="Email">
+                                <input class="form-control" name="login_data" type="text" placeholder="Email/cell/username">
                             </div>
                             <div class="form-group">
-                                <input class="form-control" type="text" placeholder="Password">
+                                <input class="form-control" name="password" type="password" placeholder="Password">
                             </div>
                             <div class="form-group">
                                 <button class="btn btn-primary btn-block" type="submit">Login</button>
@@ -41,7 +42,7 @@
                         </div>
                         <!-- /Social Login -->
 
-                        <div class="text-center dont-have">Don’t have an account? <a href="route('admin.register')">Register</a></div>
+                        <div class="text-center dont-have">Don’t have an account? <a href="{{ route('admin.register') }}">Register</a></div>
                     </div>
                 </div>
             </div>
