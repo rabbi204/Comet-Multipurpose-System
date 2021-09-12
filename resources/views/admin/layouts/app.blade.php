@@ -50,6 +50,9 @@
 		<!-- Custom JS -->
 		<script src="{{ asset('admin/assets/js/script.js') }}"></script>
 
+        <!-- comet js -->
+        <script src="{{ asset('admin/assets/js/comet/custom.js') }}"></script>
+
     </body>
 
 <!-- Mirrored from dreamguys.co.in/demo/doccure/admin/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2019 04:12:46 GMT -->
