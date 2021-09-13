@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -13,7 +15,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('admin.post.category.index');
+        $all_data = Category::all();
+        return view('admin.post.category.index',[
+            'all_data' => $all_data,
+        ]);
     }
 
     /**
@@ -34,7 +39,17 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this -> validate($request,[
+            'name'  => 'required'
+        ]);
+
+        Category::create([
+            'name'  => $request -> name,
+            'slug'  => Str::slug($request -> name),
+        ]);
+
+        return redirect() -> route('category.index') -> with('success', 'Category Added Succesfull');
+
     }
 
     /**

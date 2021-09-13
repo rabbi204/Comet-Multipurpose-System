@@ -35,6 +35,7 @@
 								<div class="card-header">
 									<h4 class="card-title">All Tags</h4>
 								</div>
+                                @include('validate')
 								<div class="card-body">
 									<div class="table-responsive">
 										<table class="table table-striped mb-0">
@@ -44,22 +45,31 @@
 													<th>Name</th>
 													<th>Slug</th>
 													<th>Status</th>
+													<th>Time</th>
 													<th>Action</th>
 												</tr>
 											</thead>
 											<tbody>
-												<tr>
-													<td>1</td>
-													<td>Doe</td>
-													<td>john@example.com</td>
-													<td>john@example.com</td>
-													<td>
-                                                        <a class="btn btn-sm btn-info" href="">View</a>
-                                                        <a class="btn btn-sm btn-warning" href="">Edit</a>
-                                                        <a class="btn btn-sm btn-danger" href="">Danger</a>
-                                                    </td>
-												</tr>
-
+                                                @foreach ($all_data as $data)
+                                                    <tr>
+                                                        <td>{{ $data -> id }}</td>
+                                                        <td>{{ $data -> name }}</td>
+                                                        <td>{{ $data -> slug }}</td>
+                                                        <td>
+                                                            @if ( $data -> status == true)
+                                                                <span class="badge badge-success">Published</span>
+                                                                @else
+                                                                <span class="badge badge-danger">Unpublished</span>
+                                                            @endif
+                                                        </td>
+                                                        <td>{{ $data -> created_at -> diffForHumans() }}</td>
+                                                        <td>
+                                                            <a class="btn btn-sm btn-info" href="">View</a>
+                                                            <a class="btn btn-sm btn-warning" href="">Edit</a>
+                                                            <a class="btn btn-sm btn-danger" href="">Danger</a>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
 											</tbody>
 										</table>
 									</div>
@@ -82,10 +92,11 @@
                     <div class="modal-body">
                         <h2>Add New Tag</h2>
                         <hr>
-                        <form action="">
+                        <form action="{{ route('tag.store') }}" method="POST">
+                            @csrf
                             <div class="form-group">
                                 <label for="">Name</label>
-                                <input type="text" class="form-control">
+                                <input type="text" name="name" class="form-control">
                             </div>
                             <div class="form-group">
                                 <input class="btn btn-primary btn-sm" type="submit" >

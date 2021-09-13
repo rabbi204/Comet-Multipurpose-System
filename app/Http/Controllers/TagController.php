@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tag;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class TagController extends Controller
@@ -13,7 +15,10 @@ class TagController extends Controller
      */
     public function index()
     {
-        return view('admin.post.tag.index');
+        $all_data = Tag::all();
+        return view('admin.post.tag.index',[
+            'all_data'  => $all_data,
+        ]);
     }
 
     /**
@@ -34,7 +39,14 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this -> validate($request,[
+            'name'  => 'required'
+        ]);
+        Tag::create([
+            'name'  => $request -> name,
+            'slug'  => Str::slug($request -> name),
+        ]);
+        return redirect() -> route('tag.index')-> with('success', 'Tag Added Successful');
     }
 
     /**

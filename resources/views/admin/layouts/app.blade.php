@@ -20,6 +20,10 @@
         <link rel="stylesheet" href="{{ asset('admin/assets/css/feathericon.min.css') }}">
 
         <link rel="stylesheet" href="{{ asset('admin/assets/plugins/morris/morris.css') }}">
+
+        <!-- sweetalert JS -->
+        <script src="{{ asset('admin/assets/js/sweetalert.min.js') }}"></script>
+
 		<!-- Main CSS -->
         <link rel="stylesheet" href="{{ asset('admin/assets/css/style.css') }}">
 
@@ -47,7 +51,9 @@
 		<script src="{{ asset('admin/assets/plugins/morris/morris.min.js') }}"></script>
 		<script src="{{ asset('admin/assets/js/chart.morris.js') }}"></script>
 
-		<!-- Custom JS -->
+
+
+        <!-- Custom JS -->
 		<script src="{{ asset('admin/assets/js/script.js') }}"></script>
 
         <!-- comet js -->
