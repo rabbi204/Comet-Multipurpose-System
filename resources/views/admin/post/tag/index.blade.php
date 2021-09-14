@@ -64,9 +64,9 @@
                                                         </td>
                                                         <td>{{ $data -> created_at -> diffForHumans() }}</td>
                                                         <td>
-                                                            <a class="btn btn-sm btn-info" href="">View</a>
-                                                            <a class="btn btn-sm btn-warning" href="">Edit</a>
-                                                            <a class="btn btn-sm btn-danger" href="">Danger</a>
+                                                            {{-- <a class="btn btn-sm btn-info" href=""><i class="fa fa-eye"></i></a> --}}
+                                                            <a class="btn btn-sm btn-warning" href=""><i class="fa fa-pencil"></i></a>
+                                                            <a class="btn btn-sm btn-danger" href=""><i class="fa fa-trash"></i></a>
                                                         </td>
                                                     </tr>
                                                 @endforeach

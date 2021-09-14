@@ -52,21 +52,27 @@
 											<tbody>
                                                 @foreach ($all_data as $data)
                                                     <tr>
-                                                        <td>{{ $data -> id }}</td>
+                                                        <td>{{ $loop -> index + 1 }}</td>
                                                         <td>{{ $data -> name }}</td>
                                                         <td>{{ $data -> slug }}</td>
-                                                        <td>
+                                                        {{-- <td>
                                                             @if ( $data -> status == true)
                                                                 <span class="badge badge-success">Published</span>
                                                                 @else
                                                                 <span class="badge badge-danger">Unpublished</span>
                                                             @endif
+                                                        </td> --}}
+                                                        <td>
+                                                            <div class="status-toggle">
+                                                                <input type="checkbox" {{ ( $data -> status == true ? 'checked="checked"' :  "") }} status_id="{{ $data -> id }}" id="cat_status_{{ $loop -> index + 1 }}" class="check cat_check" >
+                                                                <label for="cat_status_{{ $loop -> index + 1 }}" class="checktoggle">checkbox</label>
+                                                            </div>
                                                         </td>
                                                         <td>{{ date('F d Y', strtotime($data -> created_at)) }}</td>
                                                         <td>
-                                                            <a class="btn btn-sm btn-info" href="">View</a>
-                                                            <a class="btn btn-sm btn-warning" href="">Edit</a>
-                                                            <a class="btn btn-sm btn-danger" href="">Danger</a>
+                                                            {{-- <a class="btn btn-sm btn-info" href=""><i class="fa fa-eye"></i></a> --}}
+                                                            <a class="btn btn-sm btn-warning" href=""><i class="fa fa-pencil"></i></a>
+                                                            <a class="btn btn-sm btn-danger" href=""><i class="fa fa-trash"></i></a>
                                                         </td>
                                                     </tr>
                                                 @endforeach

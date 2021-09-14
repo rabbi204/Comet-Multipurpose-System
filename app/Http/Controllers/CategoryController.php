@@ -96,4 +96,23 @@ class CategoryController extends Controller
     {
         //
     }
+
+    /**
+     *  status Inactive
+     */
+    public function statusUpdateInactive($id)
+    {
+        $status_update = Category::find($id);
+        $status_update -> status = false;
+        $status_update -> update();
+    }
+    /**
+     *  status Active
+     */
+    public function statusUpdateActive($id)
+    {
+        $status_update = Category::find($id);
+        $status_update -> status = true;
+        $status_update -> update();
+    }
 }
