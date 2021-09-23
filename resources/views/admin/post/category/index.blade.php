@@ -71,7 +71,7 @@
                                                         <td>{{ date('F d Y', strtotime($data -> created_at)) }}</td>
                                                         <td>
                                                             {{-- <a class="btn btn-sm btn-info" href=""><i class="fa fa-eye"></i></a> --}}
-                                                            <a class="btn btn-sm btn-warning" href=""><i class="fa fa-pencil"></i></a>
+                                                            <a edit_id="{{ $data -> id }}" class="btn btn-sm btn-warning edit-cat" href=""><i class="fa fa-pencil"></i></a>
                                                             <form class="d-inline" action="{{ route('category.destroy', $data -> id) }}" method="POST">
                                                                 @csrf
                                                                 @method('DELETE')
@@ -96,7 +96,7 @@
 
         </div>
 		<!-- /Main Wrapper -->
-
+        <!-- start category add modal -->
         <div id="add_category_modal" class="modal fade">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -117,4 +117,30 @@
                 </div>
             </div>
         </div>
+        <!-- End category add modal -->
+
+        <!-- start category edit modal -->
+        <div id="edit_category_modal" class="modal fade">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <h2>Edit Category</h2>
+                        <hr>
+                        <form action="{{ route('category.update', 1) }}" method="POST">
+                            @csrf
+                            @method('PUT')
+                            <div class="form-group">
+                                <label for="">Name</label>
+                                <input type="text" name="name" class="form-control">
+                                <input type="hidden" name="edit_id" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input class="btn btn-primary btn-sm" type="submit" >
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End category edit modal -->
 @endsection

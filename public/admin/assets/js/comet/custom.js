@@ -65,6 +65,37 @@
 
     });
 
+    // category edit
+    $('.edit-cat').click(function(e){
+        e.preventDefault();
+        let id = $(this).attr('edit_id');
+        $.ajax({
+            url : 'category/' + id +'/edit',
+            success : function(data){
+                $('#edit_category_modal form input[name="name"]').val(data.name);
+                $('#edit_category_modal form input[name="edit_id"]').val(data.id);
+                $('#edit_category_modal').modal('show');
+            }
+        });
+
+    });
+
+    // edit tag
+    $('.edit-tag').click(function(e){
+        e.preventDefault();
+        let id = $(this).attr('edit_id');
+
+        $.ajax({
+            url : 'tag/' + id + '/edit',
+            success : function(data){
+                $('#edit_tag_modal form input[name="name"]').val(data.name);
+                $('#edit_tag_modal form input[name="edit_id"]').val(data.id);
+            }
+        });
+
+        $('#edit_tag_modal').modal('show');
+    });
+
 
 
 

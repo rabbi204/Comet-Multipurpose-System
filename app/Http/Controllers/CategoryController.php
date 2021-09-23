@@ -71,7 +71,11 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+       $edit_data = Category::find($id);
+       return [
+           'id' => $edit_data -> id,
+           'name' => $edit_data -> name,
+       ];
     }
 
     /**
@@ -83,7 +87,12 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $edit_id = $request -> edit_id;
+        $update_data = Category:: find($edit_id);
+        $update_data -> name = $request -> name;
+        $update_data -> slug = Str::slug($request -> name);
+        $update_data -> update();
+        return redirect() ->route('category.index') -> with('success', 'Category updated successful');
     }
 
     /**

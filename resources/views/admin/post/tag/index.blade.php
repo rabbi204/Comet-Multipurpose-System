@@ -71,7 +71,7 @@
                                                         <td>{{ $data -> created_at -> diffForHumans() }}</td>
                                                         <td>
                                                             {{-- <a class="btn btn-sm btn-info" href=""><i class="fa fa-eye"></i></a> --}}
-                                                            <a class="btn btn-sm btn-warning" href=""><i class="fa fa-pencil"></i></a>
+                                                            <a edit_id="{{ $data -> id }}" class="btn btn-sm btn-warning edit-tag" href=""><i class="fa fa-pencil"></i></a>
                                                             <form class="d-inline delete-btn" action="{{ route('tag.destroy', $data -> id) }}" method="POST">
                                                                 @csrf
                                                                 @method('DELETE')
@@ -107,6 +107,30 @@
                             <div class="form-group">
                                 <label for="">Name</label>
                                 <input type="text" name="name" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input class="btn btn-primary btn-sm" type="submit" >
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- edit tag modal -->
+        <div id="edit_tag_modal" class="modal fade">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <h2>Add New Tag</h2>
+                        <hr>
+                        <form action="{{ route('tag.update', 1) }}" method="POST">
+                            @csrf
+                            @method('PUT')
+                            <div class="form-group">
+                                <label for="">Name</label>
+                                <input type="text" name="name" class="form-control">
+                                <input type="hidden" name="edit_id" class="form-control">
                             </div>
                             <div class="form-group">
                                 <input class="btn btn-primary btn-sm" type="submit" >

@@ -36,7 +36,7 @@ Route::post('admin/logout', [\App\Http\Controllers\Auth\LoginController::class, 
 // post route
 Route::resource('post','App\Http\Controllers\PostController');
 
-// tag route
+// category route
 Route::resource('category','App\Http\Controllers\CategoryController');
 Route::get('category/status-inactive/{id}', 'App\Http\Controllers\CategoryController@statusUpdateInactive');
 Route::get('category/status-active/{id}', 'App\Http\Controllers\CategoryController@statusUpdateActive');
