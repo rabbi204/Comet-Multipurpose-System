@@ -48,7 +48,7 @@ class CategoryController extends Controller
             'slug'  => Str::slug($request -> name),
         ]);
 
-        return redirect() -> route('category.index') -> with('success', 'Category Added Succesfull');
+        return redirect() -> route('category.index') ->with('success', 'Category Added Succesfull');
 
     }
 

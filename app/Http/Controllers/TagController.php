@@ -93,4 +93,22 @@ class TagController extends Controller
     {
         //
     }
+    /**
+     * for tag status inactive
+     */
+    public function statusUpdateInactive($id)
+    {
+        $status_update = Tag:: find($id);
+        $status_update -> status = false;
+        $status_update -> update();
+    }
+    /**
+     * for tag status inactive
+     */
+    public function statusUpdateActive($id)
+    {
+        $status_update = Tag:: find($id);
+        $status_update -> status = true;
+        $status_update -> update();
+    }
 }

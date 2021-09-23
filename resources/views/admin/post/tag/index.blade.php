@@ -55,12 +55,18 @@
                                                         <td>{{ $data -> id }}</td>
                                                         <td>{{ $data -> name }}</td>
                                                         <td>{{ $data -> slug }}</td>
-                                                        <td>
+                                                        {{-- <td>
                                                             @if ( $data -> status == true)
                                                                 <span class="badge badge-success">Published</span>
                                                                 @else
                                                                 <span class="badge badge-danger">Unpublished</span>
                                                             @endif
+                                                        </td> --}}
+                                                        <td>
+                                                            <div class="status-toggle">
+															<input type="checkbox" {{ $data -> status == true ? 'checked="checked"' : '' }} status_id={{ $data -> id }} id="tag_status_{{ $loop -> index + 1 }}" class="check tag_check" >
+															<label for="tag_status_{{ $loop -> index + 1 }}" class="checktoggle">checkbox</label>
+														</div>
                                                         </td>
                                                         <td>{{ $data -> created_at -> diffForHumans() }}</td>
                                                         <td>
