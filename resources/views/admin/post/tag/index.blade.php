@@ -72,7 +72,11 @@
                                                         <td>
                                                             {{-- <a class="btn btn-sm btn-info" href=""><i class="fa fa-eye"></i></a> --}}
                                                             <a class="btn btn-sm btn-warning" href=""><i class="fa fa-pencil"></i></a>
-                                                            <a class="btn btn-sm btn-danger" href=""><i class="fa fa-trash"></i></a>
+                                                            <form class="d-inline delete-btn" action="{{ route('tag.destroy', $data -> id) }}" method="POST">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
+                                                            </form>
                                                         </td>
                                                     </tr>
                                                 @endforeach

@@ -54,6 +54,18 @@
 
     });
 
+    //  Delete btn fix
+    $(document).on('click', '.delete-btn', function(e){
+        let conf = confirm('Are you sure..?');
+        if( conf == true){
+            return true;
+        }else{
+            return false;
+        }
+
+    });
+
+
 
 
 
