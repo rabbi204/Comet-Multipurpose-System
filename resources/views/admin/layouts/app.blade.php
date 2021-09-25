@@ -24,6 +24,8 @@
         <!-- sweetalert JS -->
         <script src="{{ asset('admin/assets/js/sweetalert.min.js') }}"></script>
 
+        <!-- select2 css -->
+        <link rel="stylesheet" href="{{ asset('admin/assets/css/select2.css') }}">
 		<!-- Main CSS -->
         <link rel="stylesheet" href="{{ asset('admin/assets/css/style.css') }}">
 
@@ -51,12 +53,16 @@
 		<script src="{{ asset('admin/assets/plugins/morris/morris.min.js') }}"></script>
 		<script src="{{ asset('admin/assets/js/chart.morris.js') }}"></script>
 
+        <!-- ckeditor JS -->
+        <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
 
+        <!-- select2 JS -->
+        <script src="{{ asset('admin/assets/js/select2.js') }}"></script>
 
         <!-- Custom JS -->
 		<script src="{{ asset('admin/assets/js/script.js') }}"></script>
 
-        <!-- comet js -->
+        <!-- comet custom js -->
         <script src="{{ asset('admin/assets/js/comet/custom.js') }}"></script>
 
     </body>
