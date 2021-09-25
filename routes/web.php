@@ -35,6 +35,8 @@ Route::post('admin/logout', [\App\Http\Controllers\Auth\LoginController::class, 
 
 // post route
 Route::resource('post','App\Http\Controllers\PostController');
+Route::get('post-trash','App\Http\Controllers\PostController@postTrash')-> name('post.trash');
+Route::get('post-trash-update/{id}','App\Http\Controllers\PostController@postTrashUpdate')-> name('post.trash.update');
 
 // category route
 Route::resource('category','App\Http\Controllers\CategoryController');

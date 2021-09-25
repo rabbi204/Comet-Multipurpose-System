@@ -34,13 +34,14 @@
 								<div class="card-header">
 									<h4 class="card-title">Add New Post</h4>
 								</div>
+                                @include('validate')
 								<div class="card-body">
-									<form action="#">
-
+									<form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
+                                        @csrf
                                         <div class="form-group row">
 											<label class="col-lg-3 col-form-label">Post Format</label>
 											<div class="col-lg-9">
-												<select class="form-control" name="" id="post_format">
+												<select class="form-control" name="post_type" id="post_format">
                                                     <option value="">-select-</option>
                                                     <option value="Image">Image</option>
                                                     <option value="Gallery">Gallery</option>
@@ -53,7 +54,7 @@
 										<div class="form-group row">
 											<label class="col-lg-3 col-form-label">Post Title</label>
 											<div class="col-lg-9">
-												<input type="text" class="form-control">
+												<input type="text" name="title" class="form-control">
 											</div>
 										</div>
 
@@ -87,7 +88,7 @@
                                                 <div class="col-lg-9">
                                                     <img style="width: 400px; display:block" class="post_img_load" src="" alt="">
                                                     <label for="post_img_select"><img  style="width: 100px; cursor: pointer;" src="{{ URL::to('admin/assets/img/img.png') }}" alt=""></label>
-                                                    <input style="display: none;" type="file" id="post_img_select">
+                                                    <input style="display: none;" name="image" type="file" id="post_img_select">
                                                 </div>
                                             </div>
                                         </div>
@@ -107,7 +108,7 @@
                                             <div class="form-group row ">
                                                 <label class="col-lg-3 col-form-label">Post Video Link</label>
                                                 <div class="col-lg-9">
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" name="video" class="form-control">
                                                 </div>
                                             </div>
                                         </div>
@@ -116,7 +117,7 @@
                                             <div class="form-group row ">
                                                 <label class="col-lg-3 col-form-label">Post Audio Link</label>
                                                 <div class="col-lg-9">
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" name="audio" class="form-control">
                                                 </div>
                                             </div>
                                         </div>
@@ -124,7 +125,7 @@
 										<div class="form-group row">
 											<label class="col-lg-3 col-form-label">Content</label>
 											<div class="col-lg-9">
-												<textarea name="" id="post_editor"></textarea>
+												<textarea name="content" id="post_editor"></textarea>
 											</div>
 										</div>
 

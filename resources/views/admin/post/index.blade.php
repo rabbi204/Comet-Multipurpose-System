@@ -33,7 +33,9 @@
                             <a class="btn btn-primary btn-sm" href="{{ route('post.create') }}">Add New Post</a>
 							<div class="card">
 								<div class="card-header">
-									<h4 class="card-title">All Posts</h4>
+									<h4 class="card-title">All Posts(Published)</h4><br>
+                                    <a class="badge badge-primary" href="{{ route('post.index') }}">Published {{ ($published == 0 ? '' : $published )  }}</a>
+                                    <a class="badge badge-danger" href="{{ route('post.trash') }}">Trash {{ ($trash == 0 ? '' : $trash) }}</a>
 								</div>
                                 @include('validate')
 								<div class="card-body">
@@ -42,19 +44,24 @@
 											<thead>
 												<tr>
 													<th>#</th>
-													<th>Name</th>
-													<th>Slug</th>
-													<th>Status</th>
+													<th>Title</th>
+													<th>Post Type</th>
+													<th>Category</th>
+													<th>Tag</th>
 													<th>Time</th>
+													<th>Status</th>
 													<th>Action</th>
 												</tr>
 											</thead>
 											<tbody>
                                                 @foreach ($all_data as $data)
+                                                @php
+                                                     $featured_data = json_decode($data -> featured);
+                                                @endphp
                                                     <tr>
                                                         <td>{{ $loop -> index + 1 }}</td>
-                                                        <td>{{ $data -> name }}</td>
-                                                        <td>{{ $data -> slug }}</td>
+                                                        <td>{{ $data -> title }}</td>
+                                                        <td>{{ $featured_data -> post_type }}</td>
                                                         {{-- <td>
                                                             @if ( $data -> status == true)
                                                                 <span class="badge badge-success">Published</span>
@@ -70,14 +77,9 @@
                                                         </td>
                                                         <td>{{ date('F d Y', strtotime($data -> created_at)) }}</td>
                                                         <td>
-                                                            {{-- <a class="btn btn-sm btn-info" href=""><i class="fa fa-eye"></i></a> --}}
+                                                            <a class="btn btn-sm btn-info" href=""><i class="fa fa-eye"></i></a>
                                                             <a edit_id="{{ $data -> id }}" class="btn btn-sm btn-warning edit-cat" href=""><i class="fa fa-pencil"></i></a>
-                                                            <form class="d-inline" action="{{ route('category.destroy', $data -> id) }}" method="POST">
-                                                                @csrf
-                                                                @method('DELETE')
-                                                                <button class="btn btn-sm btn-danger delete-btn"><i class="fa fa-trash"></i></button>
-                                                            </form>
-
+                                                            <a  class="btn btn-sm btn-danger" href="{{ route('post.trash.update', $data -> id) }}"><i class="fa fa-trash"></i></a>
                                                         </td>
                                                     </tr>
                                                 @endforeach
